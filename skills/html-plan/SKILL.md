@@ -29,7 +29,7 @@ Produce a plan as a single self-contained HTML file that is pleasant to read and
    - Use only design tokens, type scale, and spacing from design.md.
    - Semantic HTML: `<header>`, `<main>`, `<section>`, real heading hierarchy.
    - Support light and dark color schemes if design.md defines both.
-5. Save the file next to the work it describes (default: `plan.html` in the current directory, or the path the user gives) and tell the user where it is.
+5. Save the file to `docs/plans/` in the current working project (create the folder if it doesn't exist). Name it after the plan topic in kebab-case, e.g. `docs/plans/auth-migration.html`. Use a different location only if the user explicitly asks for one. Tell the user where the file is.
 
 ## Tone: document, not landing page
 
