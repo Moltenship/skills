@@ -28,7 +28,7 @@ Produce a plan as a single self-contained HTML file that is pleasant to read and
    - All CSS inline in a `<style>` block; no external stylesheets, frameworks, or JS unless the plan genuinely needs interactivity.
    - Use only design tokens, type scale, and spacing from design.md.
    - Semantic HTML: `<header>`, `<main>`, `<section>`, real heading hierarchy.
-   - Support light and dark color schemes if design.md defines both.
+   - Support both light and dark themes with a theme picker (System / Light / Dark, System by default). Copy the three blocks from [assets/theme-picker.html](assets/theme-picker.html) verbatim — do not rewrite the logic — and fill in the color variables from design.md. All colors in the plan's CSS must go through those variables. Style the picker itself per design.md (active state via `aria-checked="true"`); keep it quiet and small in the header.
 5. Save the file to `docs/plans/` in the current working project (create the folder if it doesn't exist). Name it after the plan topic in kebab-case, e.g. `docs/plans/auth-migration.html`. Use a different location only if the user explicitly asks for one. Tell the user where the file is.
 
 ## Tone: document, not landing page

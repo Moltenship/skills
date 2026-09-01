@@ -1,0 +1,61 @@
+<!-- html-plan theme picker. Copy all three blocks verbatim into every plan. -->
+
+<!-- 1. In <head>, BEFORE any stylesheet, to avoid a flash of wrong theme: -->
+<script>
+  (function () {
+    var t = localStorage.getItem('plan-theme');
+    if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+  })();
+</script>
+
+<!-- 2. In the <style> block. Define light values in :root, dark overrides in
+     the two selectors below. The plan's own CSS must reference colors only
+     through these variables (extend the list as needed, keep the pattern): -->
+<style>
+  :root {
+    color-scheme: light;
+    /* --background, --foreground, ... : light values from design.md */
+  }
+  :root[data-theme='dark'] {
+    color-scheme: dark;
+    /* dark values from design.md */
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+      color-scheme: dark;
+      /* same dark values as :root[data-theme='dark'] */
+    }
+  }
+</style>
+
+<!-- 3. In <header>: a quiet three-state control, System active by default. -->
+<div class="theme-picker" role="radiogroup" aria-label="Theme">
+  <button type="button" data-set-theme="">System</button>
+  <button type="button" data-set-theme="light">Light</button>
+  <button type="button" data-set-theme="dark">Dark</button>
+</div>
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('[data-set-theme]');
+    function sync() {
+      var current = localStorage.getItem('plan-theme') || '';
+      buttons.forEach(function (b) {
+        b.setAttribute('aria-checked', String(b.dataset.setTheme === current));
+      });
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var t = b.dataset.setTheme;
+        if (t) {
+          localStorage.setItem('plan-theme', t);
+          document.documentElement.dataset.theme = t;
+        } else {
+          localStorage.removeItem('plan-theme');
+          delete document.documentElement.dataset.theme;
+        }
+        sync();
+      });
+    });
+    sync();
+  })();
+</script>
