@@ -31,6 +31,15 @@ Produce a plan as a single self-contained HTML file that is pleasant to read and
    - Support light and dark color schemes if design.md defines both.
 5. Save the file next to the work it describes (default: `plan.html` in the current directory, or the path the user gives) and tell the user where it is.
 
+## Tone: document, not landing page
+
+This is a working plan, not a marketing page. It should read like a well-typeset internal document:
+
+- No hero sections, no oversized display headings, no taglines or punchy one-liners.
+- Headings are quiet and functional — modest sizes, sentence case, there to navigate, not to sell.
+- No calls to action, badges, gradients, cards-for-the-sake-of-cards, or promotional layout patterns.
+- Body text carries the plan; density and readability beat visual drama. When in doubt, make it calmer.
+
 ## Quality bar
 
 - A reader should grasp the whole plan by skimming headings and the first line of each section.
